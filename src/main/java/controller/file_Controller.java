@@ -36,7 +36,7 @@ public class file_Controller {
         //通过CommonsMultipartFile的方法直接写文件（注意这个时候）
 
         file.transferTo(new File(filename));
-        String p = req.getServletContext().getContextPath() + "/../uploadFile/" + ff;
+        String p ="/uploadFile/" + ff;
        // String p ="/uploadFile/"+ff;
         String json="{\"status\":1,\"url\":\""+p+"\"}";
         return json; 
