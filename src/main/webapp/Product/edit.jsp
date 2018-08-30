@@ -146,7 +146,6 @@
          <div class="layui-input-block">
         	<div class="picList"  name="pics"  width="300"  height="200+" rows="2" cols="5" >
 					<c:forEach items="${requestScope.product.piclist}" var="p">
-					<%-- <img alt="" src="${p}"> --%>
 					<item url="${p}" >
 					</c:forEach>
 				</div>
