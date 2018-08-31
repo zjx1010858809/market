@@ -65,7 +65,7 @@
 	        </div>
      	</div>
 	</div>	
-    <table class="layui-table" id="userList" lay-filter="userList"></table>		
+    <table class="layui-table" id="userList" lay-filter="userList"></table>	
 
 </body>
 </html>

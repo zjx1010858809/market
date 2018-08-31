@@ -19,6 +19,7 @@ import Entity.Operator;
 import Entity.Orders;
 import Entity.Orders_status;
 import dao.Orders_status_dao;
+import service.Order_status_service;
 import service.Orders_service;
 import until.JsonUtil;
 import until.SearchInfo;
@@ -31,7 +32,7 @@ public class Orders_controller {
 	Orders_service orders_service;
 	
 	@Autowired
-	Orders_status_dao orders_status_dao;
+	Order_status_service order_status_service;
 	
 	@RequestMapping("index")
 	public void index() {
@@ -94,14 +95,14 @@ public class Orders_controller {
 		}
 		searchInfo.setWhere("where o.id ="+id +" and os.dest_status = 4");
 		System.out.println(searchInfo.getWhere());
-		Orders_status orders_status =orders_status_dao.select(searchInfo).get(0);
+		Orders_status orders_status =order_status_service.select(searchInfo).get(0);
 		String date =sdf.format(new Date());
 		orders_status.setDate(date);
 		orders_status.setDest_status(5);
 		orders_status.setNum(operator.getId());
 		orders.setStatus(5);
 		orders_service.update(orders);
-		orders_status_dao.insert(orders_status);
+		order_status_service.insert(orders_status);
 		return "Orders/index";
 	}
 	
@@ -117,15 +118,14 @@ public class Orders_controller {
 		orders_service.update(orders2);
 		
 		searchInfo.setWhere("where o.id ="+orders.getId() +" and os.dest_status = 1");
-		Orders_status orders_status =orders_status_dao.select(searchInfo).get(0);
-		System.out.println("状态"+orders_status_dao.select(searchInfo).get(0));
+		Orders_status orders_status =order_status_service.select(searchInfo).get(0);
 		String date =sdf.format(new Date());
 		orders_status.setDate(date);
 		orders_status.setInfo(info);
 		orders_status.setNum(operator.getId());
 		orders_status.setDest_status(2);
 		orders_status.setComments(comments);
-		orders_status_dao.insert(orders_status);
+		order_status_service.insert(orders_status);
 		return new JsonUtil(1,"");
 	}
 	
