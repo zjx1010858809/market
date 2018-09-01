@@ -15,7 +15,7 @@ public class Orders {
 	private String addr;
 	
 	private String[] statuss = {"未支付","已支付","已发货","已收货","已退货","取消"};
-	private String[] assessstatuss = {"已评价","未评价"};
+	private String[] assessstatuss = {"未评价","已评价"};
 	
 	
 	public int getId() {
